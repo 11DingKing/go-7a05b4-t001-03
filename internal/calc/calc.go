@@ -17,7 +17,7 @@ var ErrNoKaratTier = errors.New("无匹配的成色折价档位")
 // returns false when no tier matches (e.g. karat below the lowest tier).
 func DiscountRate(tiers []model.KaratTier, oldKarat int) (float64, bool) {
 	for _, t := range tiers {
-		if t.Karat < oldKarat {
+		if t.Karat <= oldKarat {
 			return t.Rate, true
 		}
 	}
